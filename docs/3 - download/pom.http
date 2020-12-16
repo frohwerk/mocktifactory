@@ -1,0 +1,16 @@
+GET http://artifactory.domain/artifactory/libs-release-local/de/firma/projekt/team/artefakt/1.2.0/artefakt-1.2.0.pom HTTP/1.1
+
+--------------------------------------------------------------------------------------------------------------------------------------------
+
+HTTP/1.1 200 OK
+Content-Type: application/x-maven-pom+xml
+Content-Disposition: attachment; filename="artefakt-1.2.0.pom"; filename*=UTF-8''artefakt-1.2.0.pom
+Last-Modified: Wed, 28 Oct 2020 12:32:31 GMT
+ETag: 12345
+
+<?xml version="1.0" encoding="UTF-8">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://ww.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+...
+</project>

@@ -1,0 +1,23 @@
+GET http://artifactory.domain/artifactory/api/storage/libs-release-local/de/firma/projekt/team/artefakt HTTP/1.1
+
+---------------------------------------------------------------------------------------------------------------------------------------
+
+HTTP/1.1 200 OK
+Content-Type: application/vnd.org.jfrog.artifactory.storage.FolderInfo+json
+
+{
+    "repo": "libs-release-local",
+    "path": "/de/firma/projekt/team/artefakt",
+    "created": "2020-03-11T08:46:37.561+01:00",
+    "createdBy": "jenkins-user",
+    "lastModified": "2020-03-11T08:46:37.561+01:00",
+    "modifiedBy": "jenkins-user",
+    "lastUpdated": "2020-03-11T08:46:37.561+01:00",
+    "children": [
+        {"uri": "/1.0.0", "folder": true},
+        {"uri": "/1.0.1", "folder": true},
+        {"uri": "/1.1.0", "folder": true},
+        {"uri": "/1.2.0", "folder": true},
+    ],
+    "uri": "http://artifactory.domain/artifactory/api/storage/libs-release-local/de/firma/projekt/team/artefakt"
+}
