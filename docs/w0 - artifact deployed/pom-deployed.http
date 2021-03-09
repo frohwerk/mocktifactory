@@ -1,0 +1,21 @@
+POST /webhook HTTP/1.1
+X-Jfrog-Service-Id [jfevt@01f0662jmb5wf21q9cmnzw19bt]
+Accept-Encoding [gzip]
+Content-Type [application/json]
+X-Jfrog-Event-Auth [secret]
+X-Jfrog-Node-Id [Wicked]
+User-Agent [JFrog Event/7.15.3 (revision: 3ac54edd87, build date: 2021-03-02T13:15:20Z)]
+Content-Length [245]
+Uber-Trace-Id [5543c70a59e4a390:5543c70a59e4a390:0000000000000000:0]
+
+{
+  "domain": "artifact",
+  "event_type": "deployed",
+  "data": {
+    "name": "demo-0.0.1.pom",
+    "path": "com/example/demo/0.0.1/demo-0.0.1.pom",
+    "repo_key": "libs-release-local",
+    "sha256": "db24b94f44893d2f4e0bbc2d424818c517f7a93e04de46fb945f06f724771d34",
+    "size": 3499
+  }
+}

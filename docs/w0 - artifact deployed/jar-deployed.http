@@ -1,0 +1,21 @@
+POST /webhook HTTP/1.1
+User-Agent [JFrog Event/7.15.3 (revision: 3ac54edd87, build date: 2021-03-02T13:15:20Z)]
+Content-Length [246]
+Content-Type [application/json]
+X-Jfrog-Event-Auth [secret]
+Accept-Encoding [gzip]
+Uber-Trace-Id [5543c70a59e4a390:5543c70a59e4a390:0000000000000000:0]
+X-Jfrog-Node-Id [Wicked]
+X-Jfrog-Service-Id [jfevt@01f0662jmb5wf21q9cmnzw19bt]
+
+{
+  "domain": "artifact",
+  "event_type": "deployed",
+  "data": {
+    "name": "demo-0.0.1.jar",
+    "path": "com/example/demo/0.0.1/demo-0.0.1.jar",
+    "repo_key": "libs-release-local",
+    "sha256": "56bf6ac8bc5319c64124512956859f54acfd86a9462cabaf9b687844d209be68",
+    "size": 29390
+  }
+}

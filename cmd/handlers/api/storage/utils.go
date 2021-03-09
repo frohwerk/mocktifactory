@@ -1,4 +1,4 @@
-package handlers
+package storage
 
 import (
 	"crypto/md5"

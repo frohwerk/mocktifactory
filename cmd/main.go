@@ -10,13 +10,21 @@ import (
 	"syscall"
 	"time"
 
-	"github.com/frohwerk/mocktifactory/cmd/handlers"
+	"github.com/frohwerk/mocktifactory/cmd/handlers/api/storage"
+	"github.com/frohwerk/mocktifactory/cmd/handlers/repository"
 )
 
 func main() {
+	repo := &repository.Repository{
+		Path: "F:/data/.m2/repository",
+		Webhooks: &repository.Webhooks{
+			Registered: []repository.Webhook{{Url: "http://localhost:8080/webhook"}},
+		},
+	}
+
 	mux := http.NewServeMux()
-	mux.HandleFunc("/api/storage/libs-release-local/", handlers.StorageHandler)
-	mux.HandleFunc("/libs-release-local/", handlers.DownloadHandler)
+	mux.HandleFunc("/api/storage/libs-release-local/", storage.CreateHandler(repo))
+	mux.Handle("/libs-release-local/", repo)
 
 	server := http.Server{
 		Addr:    ":8091",
