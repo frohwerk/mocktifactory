@@ -10,15 +10,36 @@ import (
 	"syscall"
 	"time"
 
-	"github.com/frohwerk/mocktifactory/cmd/handlers/api/storage"
-	"github.com/frohwerk/mocktifactory/cmd/handlers/repository"
+	"github.com/spf13/cobra"
+
+	"github.com/frohwerk/mocktifactory/cmd/server/handlers/api/storage"
+	"github.com/frohwerk/mocktifactory/cmd/server/handlers/repository"
 )
 
+var (
+	path    string
+	webhook string
+	command = &cobra.Command{Run: start}
+)
+
+func init() {
+	command.PersistentFlags().StringVarP(&path, "path", "p", "F:/data/.m2/repository", "Path for the storage of artifacts")
+	command.PersistentFlags().StringVarP(&webhook, "webhook", "w", "http://localhost:8080/webhook", "URL of the artifacts webhook")
+}
+
 func main() {
+	command.Use = os.Args[0]
+	if err := command.Execute(); err != nil {
+		fmt.Fprintln(os.Stderr, err)
+		os.Exit(1)
+	}
+}
+
+func start(cmd *cobra.Command, args []string) {
 	repo := &repository.Repository{
-		Path: "F:/data/.m2/repository",
+		Path: path,
 		Webhooks: &repository.Webhooks{
-			Registered: []repository.Webhook{{Url: "http://localhost:8080/webhook"}},
+			Registered: []repository.Webhook{{Url: webhook}},
 		},
 	}
 
@@ -32,7 +53,6 @@ func main() {
 	}
 
 	signals := make(chan os.Signal, 1)
-	done := make(chan bool, 1)
 
 	signal.Notify(signals, syscall.SIGINT, syscall.SIGTERM)
 
@@ -43,7 +63,6 @@ func main() {
 		if err := server.ListenAndServe(); err != nil {
 			log.Printf("ERROR error listening on %v: %v\n", server.Addr, err)
 		}
-		done <- true
 	}()
 
 	<-signals

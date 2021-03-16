@@ -10,8 +10,8 @@ import (
 	"path/filepath"
 	"strings"
 
-	"github.com/frohwerk/mocktifactory/cmd/handlers/repository"
-	"github.com/frohwerk/mocktifactory/cmd/ignores"
+	"github.com/frohwerk/mocktifactory/cmd/server/handlers/repository"
+	"github.com/frohwerk/mocktifactory/cmd/server/ignores"
 )
 
 var (
