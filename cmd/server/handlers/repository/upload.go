@@ -50,7 +50,7 @@ func (r *Repository) handleUpload(rw http.ResponseWriter, req *http.Request) (*c
 
 	switch _, err := os.Stat(dir); {
 	case os.IsNotExist(err):
-		if err := os.MkdirAll(dir, 0666); err != nil {
+		if err := os.MkdirAll(dir, 0775); err != nil {
 			log.Printf("Failed to create directory %s", dir)
 			return nil, &errorResponse{http.StatusInternalServerError, err.Error()}
 		}

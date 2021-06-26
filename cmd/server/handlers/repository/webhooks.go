@@ -77,6 +77,7 @@ func (w *Webhooks) publish(a interface{}) {
 
 		resp, err := w.transport().RoundTrip(req)
 		if err != nil {
+			log.Printf("URL: %s", req.URL)
 			log.Printf("Failed to submit http request: %v", err)
 			continue
 		}

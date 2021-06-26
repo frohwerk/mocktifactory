@@ -24,7 +24,7 @@ var (
 
 func init() {
 	command.PersistentFlags().StringVarP(&path, "path", "p", "F:/data/.m2/repository", "Path for the storage of artifacts")
-	command.PersistentFlags().StringVarP(&webhook, "webhook", "w", "http://localhost:8080/webhook", "URL of the artifacts webhook")
+	command.PersistentFlags().StringVarP(&webhook, "webhook", "w", "http://localhost:8082/webhooks/artifactory", "URL of the artifacts webhook")
 }
 
 func main() {
@@ -36,6 +36,9 @@ func main() {
 }
 
 func start(cmd *cobra.Command, args []string) {
+	fmt.Printf("Using repository: %s\n", path)
+	fmt.Printf("Using webhook: %s\n", webhook)
+
 	repo := &repository.Repository{
 		Path: path,
 		Webhooks: &repository.Webhooks{
